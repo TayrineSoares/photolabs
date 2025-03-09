@@ -15,33 +15,23 @@ const PhotoListItem = (props) => {
           alt={`Photo ${data.id} by ${data.user.username}`}
           
         />
-      </div>
 
-      <div className="photo-list__user-details">
+        <div className="photo-list__user-details">
 
-        <img 
-          className="photo-list__user-profile" 
-          src={data.user.profile} 
-          alt={`Profile Picture of ${data.user.username}`}
-          // Inline styling, scss not working, ask a mentor for help
-          style={{
-            width: "40px",
-            height: "40px",
-            objectFit: "cover",
-            borderRadius: "50%",  // Make it a circle
-            marginRight: "8px",
-          }}
-        />
-      
-        <div className="photo-list__user-info">
-          <p> {data.user.name} </p>
+          <img 
+            className="photo-list__user-profile" 
+            src={data.user.profile} 
+            alt={`Profile Picture of ${data.user.username}`}
+          />
+        
+          <div className="photo-list__user-info">
+            <p> {data.user.name} </p>
             <div className="photo-list__user-location">
               <p> {data.location.city} , {data.location.country} </p>
             </div>
+          </div>
         </div>
-
       </div>
-        
     </div>
   )
 
