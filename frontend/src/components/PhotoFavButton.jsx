@@ -7,11 +7,8 @@ const PhotoFavButton = () => {
 
   const [like, setLike] = useState (false);
 
-  const handleClick = () => {
-    !like ? setLike(true) : setLike(false);
-    console.log(like);
-  }
-
+  const handleClick = () => setLike(!like);
+  
 
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}> 
