@@ -9,6 +9,7 @@ const PhotoListItem = (props) => {
   return (
     <div>
       <div className="photo-list__item"> 
+        <PhotoFavButton photoId={data.id}/>
 
         <img 
           className='photo-list__image' 
@@ -34,7 +35,7 @@ const PhotoListItem = (props) => {
             
           </div>
 
-          <PhotoFavButton photoId={data.id}/>
+          
         </div>
         
       </div>

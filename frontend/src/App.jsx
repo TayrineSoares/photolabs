@@ -32,8 +32,7 @@ const App = () => {
     <div className="App">
       <h1>This is my App page </h1>
 
-      <PhotoFavButton /> 
-
+ 
       {/* Render 3 PhotoListItems using .map */}
 
       <div className='photo-list' >

@@ -1,5 +1,6 @@
 // import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
+import FavIcon from './FavIcon';
 import { useState } from 'react';
 
 
@@ -10,7 +11,9 @@ const PhotoFavButton = (props) => {
 
   const [isFavourite, setisFavourite] = useState (false);
 
+
   const handleClick = () => {
+    // Toggle the favourite state
     setisFavourite(prevState => !prevState);
   }
   
@@ -18,13 +21,9 @@ const PhotoFavButton = (props) => {
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}> 
 
-      {/* if isFavourite = true, adds class favourited. If false, no class is added */}
-      <div className={`photo-list__fav-icon-svg ${isFavourite ? 'favourited' : ''}`}>
+      {/* Pass the selected state to FavIcon component */}
+      <FavIcon selected={isFavourite}  />
 
-        {/* if isFavourite = true, red heart. If false, white heart */}
-        {isFavourite ? '❤️' : '🤍'}
-
-      </div>
     </div>
   );
 };
