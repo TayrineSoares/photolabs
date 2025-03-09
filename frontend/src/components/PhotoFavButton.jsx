@@ -22,7 +22,7 @@ const PhotoFavButton = (props) => {
     <div className="photo-list__fav-icon" onClick={handleClick}> 
 
       {/* Pass the selected state to FavIcon component */}
-      <FavIcon selected={isFavourite}  />
+      <FavIcon selected={isFavourite} />
 
     </div>
   );
