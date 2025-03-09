@@ -7,24 +7,41 @@ const PhotoListItem = (props) => {
 
   return (
     <div>
-      <h1>This is my PhotoListItem</h1>
-    
-      <img 
-        className='photo-image' 
-        src={data.urls.regular}
-        alt={`Photo by ${data.username}`} 
-      />
+      <div className="photo-list__item"> 
 
-      <img 
-        className='photo-profile' 
-        src={data.user.profile} 
-        alt={`Profile Picture of ${data.username}`}
-      />
-      
-      <p> {data.user.name} </p>
+        <img 
+          className='photo-list__image' 
+          src={data.urls.regular}
+          alt={`Photo ${data.id} by ${data.user.username}`}
+          
+        />
+      </div>
 
-      <p> {data.location.city} , {data.location.country} </p>
+      <div className="photo-list__user-details">
+
+        <img 
+          className="photo-list__user-profile" 
+          src={data.user.profile} 
+          alt={`Profile Picture of ${data.user.username}`}
+          // Inline styling, scss not working, ask a mentor for help
+          style={{
+            width: "40px",
+            height: "40px",
+            objectFit: "cover",
+            borderRadius: "50%",  // Make it a circle
+            marginRight: "8px",
+          }}
+        />
       
+        <div className="photo-list__user-info">
+          <p> {data.user.name} </p>
+            <div className="photo-list__user-location">
+              <p> {data.location.city} , {data.location.country} </p>
+            </div>
+        </div>
+
+      </div>
+        
     </div>
   )
 

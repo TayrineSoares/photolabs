@@ -17,14 +17,16 @@ div.photo-list__item {
 
   div.photo-list__user-details {
     display: flex;
-
+    
+    
+    /* This style is not being applied*/
     img.photo-list__user-profile {
       object-fit: cover;
       border-radius: 100%;
       vertical-align: middle;
       margin-right: 8px;
-      width: 40px;
-      height: 40px;
+      width: 40px !important;
+      height: 40px !important;
     }
     
     div.photo-list__user-info {
