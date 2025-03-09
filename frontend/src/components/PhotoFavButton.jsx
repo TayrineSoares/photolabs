@@ -3,17 +3,26 @@ import '../styles/PhotoFavButton.scss';
 import { useState } from 'react';
 
 
-const PhotoFavButton = () => {
+const PhotoFavButton = (props) => {
 
-  const [like, setLike] = useState (false);
+  {/* photoId come as a prop from the parent PhotoListItem*/ }
+  const { photoId } = props;
 
-  const handleClick = () => setLike(!like);
+  const [isFavourite, setisFavourite] = useState (false);
+
+  const handleClick = () => {
+    setisFavourite(prevState => !prevState);
+  }
   
 
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}> 
-    
-      <div className="photo-list__fav-icon-svg">
+
+      {/* if isFavourite = true, adds class favourited. If false, no class is added */}
+      <div className={`photo-list__fav-icon-svg ${isFavourite ? 'favourited' : ''}`}>
+
+        {/* if isFavourite = true, red heart. If false, white heart */}
+        {isFavourite ? '❤️' : '🤍'}
 
       </div>
     </div>

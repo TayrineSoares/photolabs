@@ -3,7 +3,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  /* Insert React */
+  {/* data come as a prop from the parent App */ }
   const { data } = props;
 
   return (
@@ -33,7 +33,8 @@ const PhotoListItem = (props) => {
             </div>
             
           </div>
-          <PhotoFavButton />
+
+          <PhotoFavButton photoId={data.id}/>
         </div>
         
       </div>
