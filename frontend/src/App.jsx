@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.scss';
-
+import TopNavigationBar from './components/TopNavigationBar';
 import PhotoList from './components/PhotoList';
-import TopicListItem from './components/TopicListItem';
 import TopicList from './components/TopicList';
+
 
 
 
@@ -17,9 +17,10 @@ const App = () => {
   
   return (
     <div className="App">
-      <h1>This is my App page </h1>
-      <TopicListItem />
-      <TopicList />
+
+
+      <TopNavigationBar />
+
 
       <div className='photo-list' >
         <PhotoList /> 
