@@ -170,7 +170,7 @@ const photo10 = {
 };
 
 
-const photos = [
+const mockPhotoData = [
   {
     ...photo1,
     similar_photos: {
@@ -263,6 +263,6 @@ const photos = [
   }
 ];
 
-export default photos;
+export default mockPhotoData;
 
 

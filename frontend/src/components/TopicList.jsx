@@ -1,9 +1,8 @@
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
-import topics from "../mocks/topics";
 
-
-const TopicList = () => {
+// Receive topics data from the parent TopNavigationBar
+const TopicList = ({topics}) => {
   return (
     <div className="top-nav-bar__topic-list">
 
