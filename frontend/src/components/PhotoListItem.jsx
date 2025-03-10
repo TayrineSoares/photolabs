@@ -3,7 +3,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  {/* data come as a prop from the parent App */ }
+  {/* data come as a prop from the parent PhotoList */ }
   const { data } = props;
 
   return (

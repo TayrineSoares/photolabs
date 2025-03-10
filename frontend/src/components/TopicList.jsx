@@ -1,5 +1,8 @@
 import "../styles/TopicList.scss";
+import TopicListItem from "./TopicListItem";
 
+// array of objects means we can map over 
+// and send data as a prop to the child TopicListItem
 const sampleDataForTopicList = [
   {
     id: 1,
@@ -21,7 +24,14 @@ const sampleDataForTopicList = [
 const TopicList = () => {
   return (
     <div className="top-nav-bar__topic-list">
-      {/* Insert React */}
+
+      {/* map over and send data as a prop to the child TopicListItem */ }
+      {sampleDataForTopicList.map((item, index) => {
+        return (
+          <TopicListItem key={item.id} title={item.title}  />
+        )
+      })}
+    
     </div>
   );
 };
