@@ -3,15 +3,15 @@ import TopNavigationBar from './TopNavigationBar';
 import PhotoList from './PhotoList';
 
 // receive photos and topics data from parent App
-const HomeRoute = ({photos, topics}) => {
+const HomeRoute = (props) => {
   return (
     <div className='home-route'>
 
       {/*send topics data as a prop to the child */ }
-      <TopNavigationBar topics={topics}/>
+      <TopNavigationBar topics={props.topics}/>
       <div className='photo-list' >
         {/*send photos data as a prop to the childs */ }
-        <PhotoList photos={photos}/>
+        <PhotoList photos={props.photos} likedPhotos={props.likedPhotos} dispatch={props.dispatch} />
       </div>
     </div>
   )
