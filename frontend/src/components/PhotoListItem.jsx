@@ -4,12 +4,16 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   {/* data come as a prop from the parent PhotoList */ }
-  const { data } = props;
+  const { data, likedPhotos, dispatch } = props;
 
   return (
     <div>
       <div className="photo-list__item"> 
-        <PhotoFavButton photoId={data.id}/>
+        <PhotoFavButton 
+        photoId={data.id}
+        likedPhotos={likedPhotos}
+        dispatch={dispatch}
+        />
 
         <img 
           className='photo-list__image' 
@@ -34,10 +38,7 @@ const PhotoListItem = (props) => {
             </div>
             
           </div>
-
-          
         </div>
-        
       </div>
     </div>
   )

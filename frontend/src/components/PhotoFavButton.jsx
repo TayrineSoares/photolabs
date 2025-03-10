@@ -7,17 +7,14 @@ import { useState } from 'react';
 
 const PhotoFavButton = (props) => {
 
-  {/* photoId come as a prop from the parent PhotoListItem*/ }
-  {/* we are not using it yet but may be useful later when each photo has an unique Id */ }
-  const { photoId } = props;
+  const { photoId, likedPhotos, dispatch } = props;
 
-  const [isFavourite, setisFavourite] = useState (false);
+  const isFavourite = likedPhotos.includes(photoId);
 
   const handleClick = () => {
-    setisFavourite(prevState => !prevState);
+    dispatch(photoId); // Toggle photo in global state
   }
   
-
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}> 
 
