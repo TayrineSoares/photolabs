@@ -21,7 +21,6 @@ const PhotoListItem = (props) => {
           alt={`Photo ${data.id} by ${data.user.username}`}
           
         />
-        
 
         <div className="photo-list__user-details">
 

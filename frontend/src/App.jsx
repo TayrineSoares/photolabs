@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.scss';
-import { useReducer, useState } from 'react';
-import HomeRoute from './components/HomeRoute';
+import { useReducer } from 'react';
+import HomeRoute from './routes/HomeRoute';
 
 // import mock data
 import mockPhotoData from './mocks/photos';
 import mockTopicsData from './mocks/topics'
-
 
 
 const App = () => {
