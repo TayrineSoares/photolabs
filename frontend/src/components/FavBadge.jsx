@@ -2,11 +2,11 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = (props) => {
+const FavBadge = ({ isFavPhotoExist }) => {
   return (
     <div className='fav-badge'>
-      {/* displayAlert={likedPhotos.length > 0}: This will pass true to displayAlert in the FavIcon component */}
-      <FavIcon displayAlert={props.likedPhotos.length > 0} selected={true} />
+      
+      <FavIcon displayAlert={isFavPhotoExist} selected={true} />
     </div>
   ) 
 };
