@@ -12,3 +12,4 @@ const PhotoDetailsModal = () => {
 };
 
 export default PhotoDetailsModal;
+

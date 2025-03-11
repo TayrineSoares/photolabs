@@ -1,14 +1,13 @@
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-
 const PhotoListItem = (props) => {
-  {/* data come as a prop from the parent PhotoList */ }
-  const { data, likedPhotos, dispatch } = props;
+  // data come as a prop from the parent PhotoList
+  const { data, likedPhotos, dispatch, toggleModal } = props;
 
   return (
     <div>
-      <div className="photo-list__item"> 
+      <div className="photo-list__item" > 
         <PhotoFavButton 
         photoId={data.id}
         likedPhotos={likedPhotos}
@@ -19,6 +18,7 @@ const PhotoListItem = (props) => {
           className='photo-list__image' 
           src={data.urls.regular}
           alt={`Photo ${data.id} by ${data.user.username}`}
+          onClick={toggleModal} // calls the toggleModal that comes from App
           
         />
 
