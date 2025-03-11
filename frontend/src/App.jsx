@@ -33,7 +33,7 @@ const App = () => {
     : [...likedPhotos, photoId] // Add to the list if not liked
     )
   }, [])
-  //console.log(likedPhotos);
+  console.log(likedPhotos);
 
   // --------------------------------------------------------------------
   // LOGIC FOR MODAL STATE & SELECTED PHOTO
@@ -66,7 +66,7 @@ const App = () => {
       /> 
 
       {/* Conditionally render the modal and pass selectedPhoto and all photos (to be able to find similar photos) */}
-      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={selectedPhoto} photos={mockPhotoData} />}
+      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={selectedPhoto} likedPhotos={likedPhotos} />}
       
     </div>
   );

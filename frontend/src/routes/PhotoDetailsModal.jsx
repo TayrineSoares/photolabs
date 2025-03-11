@@ -5,17 +5,12 @@ import PhotoList from '../components/PhotoList';
 
 
 const PhotoDetailsModal = (props) => {
-  const { toggleModal, selectedPhoto, photos } = props;
-
-  //console.log("Selected Photo Data:", photo); // Log received data
+  const { toggleModal, selectedPhoto, likedPhotos, dispatch } = props;
 
   if (!selectedPhoto) return null; // Avoid rendering if no photo is selected
 
-  // Find similar photos (same topic, but exclude the selected photo)
-  const similarPhotos = photos.filter((photo) => 
-    photo.id !== selectedPhoto.id && photo.topic === selectedPhoto.topic
-  );
-
+  // converts similarPhotos object into an array
+  const similarPhotos = Object.values(selectedPhoto.similar_photos);
 
   return (
     <div className="photo-details-modal">
@@ -25,12 +20,11 @@ const PhotoDetailsModal = (props) => {
       </button>
       
       <div className="photo-details-modal__image">
-        
         {/* Use PhotoListItem to display the selected photo */}
         <PhotoListItem 
           photo={selectedPhoto} 
-          likedPhotos={[]} // Pass empty array for now
-          dispatch={() => {}} // Placeholder function
+          likedPhotos={likedPhotos}
+          dispatch={dispatch} 
           toggleModal={toggleModal} 
         /> 
       </div>

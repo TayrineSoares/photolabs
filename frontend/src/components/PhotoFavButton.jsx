@@ -5,7 +5,7 @@ import FavIcon from './FavIcon';
 
 const PhotoFavButton = (props) => {
 
-  const { photoId, likedPhotos, dispatch } = props;
+  const { photoId, likedPhotos = [], dispatch } = props;
 
   const isFavourite = likedPhotos.includes(photoId);
 
