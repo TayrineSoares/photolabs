@@ -62,7 +62,7 @@ const App = () => {
       /> 
 
       {/* Conditionally render the modal based on its state */}
-      {isModalOpen && <PhotoDetailsModal />}
+      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal}/>}
       
     </div>
   );
