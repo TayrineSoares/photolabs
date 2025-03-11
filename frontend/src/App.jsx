@@ -42,7 +42,7 @@ const App = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null); 
-  
+
   const toggleModal = (photo) => {
 
     setSelectedPhoto(photo); // Store selected photo
@@ -65,8 +65,8 @@ const App = () => {
         toggleModal={toggleModal}
       /> 
 
-      {/* Conditionally render the modal and pass selectedPhoto */}
-      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={selectedPhoto} />}
+      {/* Conditionally render the modal and pass selectedPhoto and all photos (to be able to find similar photos) */}
+      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={selectedPhoto} photos={mockPhotoData} />}
       
     </div>
   );
