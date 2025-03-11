@@ -1,9 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { useReducer, useState } from 'react';
-import PhotoFavButton from './components/PhotoFavButton';
 import HomeRoute from './components/HomeRoute';
-
 
 // import mock data
 import mockPhotoData from './mocks/photos';
@@ -37,6 +35,7 @@ const App = () => {
   return (
     <div className="App">
       {/*send photos and topics mock data as a prop to the childs */ }
+      {/*send likedPhotos and dispatch all the way down to PhotoFavButton */ }
       <HomeRoute 
         photos={mockPhotoData} 
         topics={mockTopicsData}
