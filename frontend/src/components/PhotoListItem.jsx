@@ -3,22 +3,23 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   // data come as a prop from the parent PhotoList
-  const { data, likedPhotos, dispatch, toggleModal } = props;
+  const { photo, likedPhotos, dispatch, toggleModal } = props;
+  console.log("PHOTO LIST ITEM", photo);
 
   return (
     <div>
       <div className="photo-list__item" > 
         <PhotoFavButton 
-        photoId={data.id}
+        photoId={photo.id}
         likedPhotos={likedPhotos}
         dispatch={dispatch}
         />
 
         <img 
           className='photo-list__image' 
-          src={data.urls.regular}
-          alt={`Photo ${data.id} by ${data.user.username}`}
-          onClick={toggleModal} // calls the toggleModal that comes from App
+          src={photo.urls.regular}
+          alt={`Photo ${photo.id} by ${photo.user.username}`}
+          onClick={() => toggleModal(photo)} // calls the toggleModal that comes from App
           
         />
 
@@ -26,14 +27,14 @@ const PhotoListItem = (props) => {
 
           <img 
             className="photo-list__user-profile" 
-            src={data.user.profile} 
-            alt={`Profile Picture of ${data.user.username}`}
+            src={photo.user.profile} 
+            alt={`Profile Picture of ${photo.user.username}`}
           />
         
           <div className="photo-list__user-info">
-            <p> {data.user.name} </p>
+            <p> {photo.user.name} </p>
             <div className="photo-list__user-location">
-              <p> {data.location.city} , {data.location.country} </p>
+              <p> {photo.location.city} , {photo.location.country} </p>
             </div>
             
           </div>

@@ -6,9 +6,9 @@ const PhotoList = (props) => {
   return (
     <ul className="photo-list">
       {/* map over photos array and send data as a prop to the child PhotoListItem */ }
-      {props.photos.map((item) => {
+      {props.photos.map((photo) => {
         return (
-          <PhotoListItem key={item.id} data={item} likedPhotos={props.likedPhotos} dispatch={props.dispatch} toggleModal={props.toggleModal} />
+          <PhotoListItem key={photo.id} photo={photo} likedPhotos={props.likedPhotos} dispatch={props.dispatch} toggleModal={props.toggleModal} />
         )
       })}
 

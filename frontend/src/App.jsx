@@ -36,17 +36,21 @@ const App = () => {
   //console.log(likedPhotos);
 
   // --------------------------------------------------------------------
-  // LOGIC FOR STATE OF MODAL
+  // LOGIC FOR MODAL STATE & SELECTED PHOTO
   // useState to control the state of the Modal. Starts with false (closed)
   // The toggleModal is a function that will be called with the onClick on the PhotoListItem component. 
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleModal = () => {
-    setIsModalOpen (!isModalOpen);
+  const [selectedPhoto, setSelectedPhoto] = useState(null); 
+  
+  const toggleModal = (photo) => {
+
+    setSelectedPhoto(photo); // Store selected photo
+    setIsModalOpen (!isModalOpen); // Open modal if photo is passed, otherwise close
   };
   
   // --------------------------------------------------------------------
-
+  
   return (
     <div className="App">
       {/*send photos and topics mock data as a prop to the childs */ }
@@ -61,8 +65,8 @@ const App = () => {
         toggleModal={toggleModal}
       /> 
 
-      {/* Conditionally render the modal based on its state */}
-      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} photos={mockPhotoData}/>}
+      {/* Conditionally render the modal and pass selectedPhoto */}
+      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={selectedPhoto} />}
       
     </div>
   );
