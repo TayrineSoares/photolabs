@@ -1,6 +1,5 @@
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
-import PhotoListItem from '../components/PhotoListItem';
 import PhotoList from '../components/PhotoList';
 import PhotoFavButton from '../components/PhotoFavButton';
 
@@ -24,7 +23,7 @@ const PhotoDetailsModal = (props) => {
       </button>
     
       <div className='photo-details-modal__images'>
-        <PhotoFavButton />
+        <PhotoFavButton likedPhotos={likedPhotos} dispatch={dispatch} photoId={selectedPhoto.id}/>
         <img 
         className="photo-details-modal__image"
         src={selectedPhoto.urls.regular}
