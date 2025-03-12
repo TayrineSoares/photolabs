@@ -20,7 +20,6 @@ const PhotoListItem = (props) => {
           src={photo.urls.regular}
           alt={`Photo ${photo.id} by ${photo.user.username}`}
           onClick={() => toggleModal(photo)} // calls the toggleModal that comes from App 
-          
         />
 
         <div className="photo-list__user-details">
