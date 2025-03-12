@@ -9,12 +9,12 @@ const PhotoFavButton = (props) => {
 
   const isFavourite = likedPhotos.includes(photoId);
 
-  const handleClick = () => {
+  const handleFavouriteClick = () => {
     dispatch(photoId); // Toggle photo in global state
   }
   
   return (
-    <div className="photo-list__fav-icon" onClick={handleClick}> 
+    <div className="photo-list__fav-icon" onClick={handleFavouriteClick}> 
 
       {/* Pass the selected (isFavourite) state to FavIcon component as prop */}
       <FavIcon selected={isFavourite} />

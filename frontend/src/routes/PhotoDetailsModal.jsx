@@ -24,6 +24,7 @@ const PhotoDetailsModal = (props) => {
     
       <div className='photo-details-modal__images'>
         <PhotoFavButton likedPhotos={likedPhotos} dispatch={dispatch} photoId={selectedPhoto.id}/>
+
         <img 
         className="photo-details-modal__image"
         src={selectedPhoto.urls.regular}
@@ -43,7 +44,6 @@ const PhotoDetailsModal = (props) => {
               <p> {selectedPhoto.location.city} , {selectedPhoto.location.country} </p>
             </div>
           </div>
-          
         </div>
       
         {/* Display similar photos */}
@@ -55,4 +55,3 @@ const PhotoDetailsModal = (props) => {
 };
 
 export default PhotoDetailsModal;
-

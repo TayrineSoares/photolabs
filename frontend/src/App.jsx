@@ -33,7 +33,7 @@ const App = () => {
     : [...likedPhotos, photoId] // Add to the list if not liked
     )
   }, [])
-  console.log(likedPhotos);
+  console.log('I AM INSIDE APP.JSX AND THIS IS MY LIKEDPHOTOS ARRAY', likedPhotos);
 
   // --------------------------------------------------------------------
   // LOGIC FOR MODAL STATE & SELECTED PHOTO
