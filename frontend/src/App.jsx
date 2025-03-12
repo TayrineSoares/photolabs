@@ -24,8 +24,8 @@ const App = () => {
   // The Hook returns: 
       //  likedPhotos → the current state (an array of liked photo IDs).
       //  dispatch → a function that you can call to update likedPhotos by passing a photoId.
-  
 
+  
   const [likedPhotos, dispatch] = useReducer((likedPhotos, photoId) => {
     return (
     likedPhotos.includes(photoId)
