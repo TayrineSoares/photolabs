@@ -65,8 +65,8 @@ const App = () => {
         toggleModal={toggleModal}
       /> 
 
-      {/* Conditionally render the modal and pass selectedPhoto and all photos (to be able to find similar photos) */}
-      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={selectedPhoto} likedPhotos={likedPhotos} />}
+      {/* Conditionally render the modal and pass data to children  */}
+      {isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={selectedPhoto} likedPhotos={likedPhotos} dispatch={dispatch} />}
       
     </div>
   );
