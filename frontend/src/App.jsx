@@ -19,7 +19,6 @@ const App = () => {
     toggleModal
   } = useApplicationData();
 
-  
   // --------------------------------------------------------------------
   
   return (
