@@ -1,47 +1,74 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 
+// reducer function 
+const reducer = (state, action) => {
 
-// creates a custom hook
+  if (action.type === "FAV_PHOTO_ADDED") {
+    return {
+      ...state, 
+      likedPhotos: [...state.likedPhotos, action.payload.id],
+    }
+  }
+
+  if (action.type === "FAV_PHOTO_REMOVED") {
+    return {
+      ...state, 
+      likedPhotos: state.likedPhotos.filter((id) => id !== action.payload.id) // Remove from favorites
+    };
+  }
+
+  if (action.type === "TOGGLE_MODAL") {
+    return {
+      ...state,
+      selectedPhoto: action.payload.photo, 
+      isModalOpen: !state.isModalOpen // Toggle modal state
+    };
+  }
+
+  if (action.type === "SET_APP_DATA") {
+    return {
+      ...state,
+      likedPhotos: action.payload.likedPhotos || [],
+    };
+  }
+}
+
+// Setting Initial State
+const initialState = {
+  likedPhotos: [], 
+  isModalOpen: false,
+  selectedPhoto: null
+}
+
+// Custom hook
 const useApplicationData = () => {
 
+  const [state, dispatch] = useReducer(reducer, initialState); 
 
-  // Reducer function for managing favorite photos
-  const manageLikes = (likedPhotos, photoId) => {
-    return ( likedPhotos.includes(photoId) ? 
-    likedPhotos.filter((id) => id !== photoId) // Remove from the list if already liked - equivalent to unlinking the pic 
-    : [...likedPhotos, photoId] // Add to the list if not liked
-  )
-  };
-
- // Applying the useReducer
-  const [ likedPhotos, dispatch ] = useReducer(manageLikes, []);
-  console.log("THIS IS MY LIKED PHOTOS ARRAY", likedPhotos);
-
-  
-  // Modal and selected photo state
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null); 
-
-
-  // Action to update favorite photos 
-  // in this case, dispatch = manageLikes
-  const updateToFavPhotoIds = (photoId) => dispatch(photoId);
-
-  // Toggle modal function (open/close)
+  // Function to toggle (open and close) modal
   const toggleModal = (photo = null) => {
-    
-    setSelectedPhoto(photo); // Store selected photo
-    setIsModalOpen (!isModalOpen); // Open modal if photo is passed, otherwise close
+    dispatch( { type: "TOGGLE_MODAL", payload: {photo} } )
   };
 
+  // Function to update list of liked photos
+  const favouritePhotos = (id) => {
+    state.likedPhotos.includes(id) ? 
+      dispatch( { type: "FAV_PHOTO_REMOVED", payload: {id} } ) 
+      : dispatch( { type: "FAV_PHOTO_ADDED", payload: {id} } )
+  }; 
+
+  //Action to update state from backend response
+  const setAppData = (data) => {
+    dispatch( {type: "SET_APP_DATA", payload: {likedPhotos: data.likedPhotos} } )
+  }; 
 
   // Our useApplicationData Hook will return an object
   return {
-    state: { likedPhotos, isModalOpen, selectedPhoto }, 
-    updateToFavPhotoIds,
-    toggleModal,
-  }
-
+    state, 
+    toggleModal, 
+    favouritePhotos,
+    setAppData
+  };
 };
 
 export default useApplicationData; 

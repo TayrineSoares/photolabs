@@ -11,9 +11,11 @@ const PhotoList = (props) => {
           <PhotoListItem key={photo.id} photo={photo} likedPhotos={props.likedPhotos} dispatch={props.dispatch} toggleModal={props.toggleModal} />
         )
       })}
+    
 
     </ul>
   );
+  
 };
 
 export default PhotoList;

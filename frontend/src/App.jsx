@@ -15,7 +15,7 @@ const App = () => {
   // Use custom hook to manage application state
   const {
     state,
-    updateToFavPhotoIds, 
+    favouritePhotos, 
     toggleModal
   } = useApplicationData();
 
@@ -31,13 +31,13 @@ const App = () => {
         photos={mockPhotoData} 
         topics={mockTopicsData}
         likedPhotos={state.likedPhotos}
-        dispatch={updateToFavPhotoIds} 
+        dispatch={favouritePhotos} 
         toggleModal={toggleModal}
       /> 
 
       {/* Conditionally render the modal and pass data to children  */}
-      {state.isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={state.selectedPhoto} likedPhotos={state.likedPhotos} dispatch={updateToFavPhotoIds} />}
-      
+      {state.isModalOpen && <PhotoDetailsModal toggleModal={toggleModal} selectedPhoto={state.selectedPhoto} likedPhotos={state.likedPhotos} dispatch={favouritePhotos} />}
+
     </div>
   );
 };
