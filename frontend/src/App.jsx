@@ -5,10 +5,6 @@ import useApplicationData from './hooks/useApplicationData';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
-// import mock data
-import mockTopicsData from './mocks/topics'
-
-
 const App = () => {
 
   // Use custom hook to manage application state
@@ -28,7 +24,7 @@ const App = () => {
       
       <HomeRoute 
         photos={state.photoData} 
-        topics={mockTopicsData}
+        topics={state.topicData}
         likedPhotos={state.likedPhotos}
         dispatch={favouritePhotos} 
         toggleModal={toggleModal}

@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react"
 
 // reducer function 
 const reducer = (state, action) => {
@@ -39,6 +39,13 @@ const reducer = (state, action) => {
       photoData: action.payload
     }
   }
+
+  if (action.type === "SET_TOPIC_DATA") {
+    return {
+      ...state, 
+      topicData: action.payload
+    }
+  }
 }
 
 // Setting Initial State
@@ -66,10 +73,19 @@ const useApplicationData = () => {
         dispatch( {type: "SET_PHOTO_DATA", payload: data})
       })
       .catch(error => {
-        console.error("Error Fetching data", error)
+        console.error("Error Fetching photos data", error)
       })
         
   },[])
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/topics')
+    .then (res => res.json())
+    .then (data => dispatch( {type: "SET_TOPIC_DATA", payload: data})
+    )
+    .catch(error => console.log("Error Fetching topics data", error))
+
+  }, [])
 
   
 
