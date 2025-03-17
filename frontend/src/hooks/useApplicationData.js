@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 // reducer function 
 const reducer = (state, action) => {
@@ -35,6 +35,8 @@ const reducer = (state, action) => {
 
 // Setting Initial State
 const initialState = {
+  photoData: [],
+  topicData: [],
   likedPhotos: [], 
   isModalOpen: false,
   selectedPhoto: null
@@ -44,6 +46,23 @@ const initialState = {
 const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState); 
+
+  //useEffect to fetch data 
+  useEffect(() => {
+    fetch('http://localhost:8001/api/photos')
+      .then(res => {
+        return res.json(); // Parse the JSON response
+      })
+      .then(photoData => {
+      console.log("This is my photoData" , photoData); // Log the photo data
+      })
+      .catch(error => {
+        console.error("Error Fetching data", error)
+      })
+        
+  },[])
+
+
 
   // Function to toggle (open and close) modal
   const toggleModal = (photo = null) => {
@@ -70,6 +89,8 @@ const useApplicationData = () => {
     setAppData
   };
 };
+
+
 
 export default useApplicationData; 
       
