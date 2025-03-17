@@ -7,9 +7,9 @@ const TopicList = (props) => {
     <div className="top-nav-bar__topic-list">
 
       {/* map over topics array and send data as a prop to the child TopicListItem */ }
-      {props.topics.map((item, index) => {
+      {props.topics.map((item) => {
         return (
-          <TopicListItem key={item.id} title={item.title}  />
+          <TopicListItem key={item.id} title={item.title} id={item.id} setSelectedTopic={props.setSelectedTopic}  />
         )
       })}
     

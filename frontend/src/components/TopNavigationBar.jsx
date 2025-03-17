@@ -12,7 +12,7 @@ const TopNavigationBar = (props) => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs </span>
       {/*send data as a prop to the child */ }
-      <TopicList topics={props.topics} /> 
+      <TopicList setSelectedTopic={props.setSelectedTopic} topics={props.topics} /> 
       <FavBadge isFavPhotoExist={isFavPhotoExist} />
 
     </div>

@@ -1,17 +1,15 @@
 import "../styles/TopicListItem.scss";
 
-// const sampleDataForTopicListItem = {
-//   id: 1,
-//   slug: "topic-1",
-//   label: "Nature",
-// };
-
 const TopicListItem = (props) => {
   {/* data come as a prop from the parent TopicList */ }
-  const { title } = props; 
+  const { id, title, setSelectedTopic } = props; 
+
+  const handleTopicClick = () => {
+    setSelectedTopic(id);
+  }
   
   return (
-    <div className="topic-list__item">
+    <div className="topic-list__item" onClick={handleTopicClick}>
   
       <ul> {title} </ul>
 

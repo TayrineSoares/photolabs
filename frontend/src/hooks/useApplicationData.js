@@ -46,6 +46,22 @@ const reducer = (state, action) => {
       topicData: action.payload
     }
   }
+
+  // Action for setting the photos based on a specific topic
+  if (action.type === "SET_TOPIC_PHOTOS") {
+    return {
+      ...state, 
+      photoData: action.payload, // Set the new photos for the selected topic
+    }
+  }
+
+  // Action for setting the selected topic
+  if (action.type === "SET_SELECTED_TOPIC") {
+    return {
+      ...state,
+      selectedTopic: action.payload, // Store the selected topic in state
+    };
+  }
 }
 
 // Setting Initial State
@@ -54,7 +70,8 @@ const initialState = {
   topicData: [],
   likedPhotos: [], 
   isModalOpen: false,
-  selectedPhoto: null
+  selectedPhoto: null,
+  selectedTopic: null
 }
 
 // Custom hook
@@ -62,32 +79,54 @@ const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState); 
 
-  //useEffect to fetch data (in this case, the photos)
+ 
+  //useEffect to fetch ALL photos
   useEffect(() => {
     fetch('http://localhost:8001/api/photos')
-      .then(res => {
-        return res.json(); // Parse the JSON response
-      })
+
+      .then(res => res.json() ) // Parse the JSON response
+      
       // dispatch the photos data as a payload for your reducer.
-      .then(data => {
-        dispatch( {type: "SET_PHOTO_DATA", payload: data})
-      })
+      .then(data => dispatch( {type: "SET_PHOTO_DATA", payload: data}))
+
       .catch(error => {
         console.error("Error Fetching photos data", error)
       })
         
   },[])
 
+  //useEffect to fetch ALL topics
   useEffect(() => {
     fetch('http://localhost:8001/api/topics')
-    .then (res => res.json())
-    .then (data => dispatch( {type: "SET_TOPIC_DATA", payload: data})
-    )
+
+    .then (res => res.json()) // Parse the JSON response
+
+    // dispatch the photos data as a payload for your reducer.
+    .then (data => dispatch( {type: "SET_TOPIC_DATA", payload: data}))
+
     .catch(error => console.log("Error Fetching topics data", error))
 
   }, [])
 
-  
+   //useEffect to fetch photos based on a selected topic
+   useEffect(() => {
+    if (state.selectedTopic) {
+      fetch(`http://localhost:8001/api/topics/${state.selectedTopic}/photos`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch topic photos');
+        }
+        return res.json(); // Parse the JSON response
+      })
+      .then(data => {
+        dispatch( {type: "SET_TOPIC_PHOTOS", payload: data }); // Dispatch the topic-based photos
+      })
+      .catch(error => {
+        console.log("Erro Fetching photos for topic", error);
+      })
+    }
+  }, [state.selectedTopic]) // Runs when selectedTopic changes
+
 
   // Function to toggle (open and close) modal
   const toggleModal = (photo = null) => {
@@ -106,16 +145,20 @@ const useApplicationData = () => {
     dispatch( {type: "SET_APP_DATA", payload: {likedPhotos: data.likedPhotos} } )
   }; 
 
+  // Action to set selected topic (new function)
+  const setSelectedTopic = (topicId) => {
+    dispatch({ type: "SET_SELECTED_TOPIC", payload: topicId });
+  };
+
   // Our useApplicationData Hook will return an object
   return {
     state, 
     toggleModal, 
     favouritePhotos,
-    setAppData
+    setAppData, 
+    setSelectedTopic
   };
 };
-
-
 
 export default useApplicationData; 
       

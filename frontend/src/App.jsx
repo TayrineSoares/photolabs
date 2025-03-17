@@ -11,7 +11,8 @@ const App = () => {
   const {
     state,
     favouritePhotos, 
-    toggleModal
+    toggleModal,
+    setSelectedTopic
   } = useApplicationData();
 
   // --------------------------------------------------------------------
@@ -28,6 +29,7 @@ const App = () => {
         likedPhotos={state.likedPhotos}
         dispatch={favouritePhotos} 
         toggleModal={toggleModal}
+        setSelectedTopic={setSelectedTopic}
       /> 
 
       {/* Conditionally render the modal and pass data to children  */}
