@@ -79,7 +79,6 @@ const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState); 
 
- 
   //useEffect to fetch ALL photos
   useEffect(() => {
     fetch('http://localhost:8001/api/photos')
@@ -161,6 +160,3 @@ const useApplicationData = () => {
 };
 
 export default useApplicationData; 
-      
-    
-      

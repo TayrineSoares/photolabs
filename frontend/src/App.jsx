@@ -29,6 +29,7 @@ const App = () => {
         likedPhotos={state.likedPhotos}
         dispatch={favouritePhotos} 
         toggleModal={toggleModal}
+        selectedTopic={state.selectedTopic}
         setSelectedTopic={setSelectedTopic}
       /> 
 
