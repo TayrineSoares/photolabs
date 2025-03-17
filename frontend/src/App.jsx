@@ -6,7 +6,6 @@ import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 // import mock data
-import mockPhotoData from './mocks/photos';
 import mockTopicsData from './mocks/topics'
 
 
@@ -28,7 +27,7 @@ const App = () => {
       {/*send toggleModal all the way down to PhotoListItem */ }
       
       <HomeRoute 
-        photos={mockPhotoData} 
+        photos={state.photoData} 
         topics={mockTopicsData}
         likedPhotos={state.likedPhotos}
         dispatch={favouritePhotos} 

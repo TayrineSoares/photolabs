@@ -71,7 +71,7 @@ const useApplicationData = () => {
         
   },[])
 
-
+  
 
   // Function to toggle (open and close) modal
   const toggleModal = (photo = null) => {
