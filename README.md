@@ -41,7 +41,9 @@ Note that two different servers will be running during development:
 
 ## Screenshots
 
+![Photolabs with the Animal topic filterd](https://github.com/TayrineSoares/photolabs/blob/main/docs/photolabs1.jpg?raw=true)
 
+![Photolabs with modal open](https://github.com/TayrineSoares/photolabs/blob/main/docs/photolabsmodal.jpg?raw=true)
 
 ## Stretch Goals
 
