@@ -31,6 +31,14 @@ const reducer = (state, action) => {
       likedPhotos: action.payload.likedPhotos || [],
     };
   }
+
+  // Store the data in the photoData variable
+  if (action.type === "SET_PHOTO_DATA") {
+    return {
+      ...state,
+      photoData: action.payload
+    }
+  }
 }
 
 // Setting Initial State
@@ -47,14 +55,15 @@ const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState); 
 
-  //useEffect to fetch data 
+  //useEffect to fetch data (in this case, the photos)
   useEffect(() => {
     fetch('http://localhost:8001/api/photos')
       .then(res => {
         return res.json(); // Parse the JSON response
       })
-      .then(photoData => {
-      console.log("This is my photoData" , photoData); // Log the photo data
+      // dispatch the photos data as a payload for your reducer.
+      .then(data => {
+        dispatch( {type: "SET_PHOTO_DATA", payload: data})
       })
       .catch(error => {
         console.error("Error Fetching data", error)
