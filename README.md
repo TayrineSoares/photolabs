@@ -41,6 +41,8 @@ Note that two different servers will be running during development:
 
 ## Screenshots
 
+![Photolabs Homepage](https://github.com/TayrineSoares/photolabs/blob/main/docs/photolabshomepage.jpg?raw=true)
+
 ![Photolabs with the Animal topic filterd](https://github.com/TayrineSoares/photolabs/blob/main/docs/photolabs1.jpg?raw=true)
 
 ![Photolabs with modal open](https://github.com/TayrineSoares/photolabs/blob/main/docs/photolabsmodal.jpg?raw=true)
