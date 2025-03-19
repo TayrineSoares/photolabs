@@ -9,6 +9,7 @@ const PhotoDetailsModal = (props) => {
 
   if (!selectedPhoto) return null; // Avoid rendering if no photo is selected
 
+  
 
   // converts similarPhotos object into an array
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
@@ -27,33 +28,33 @@ const PhotoDetailsModal = (props) => {
 
         <img 
         className="photo-details-modal__image"
-        src={selectedPhoto.urls.regular}
+        src={selectedPhoto.urls.full}
         alt={`Photo ${selectedPhoto.id} by ${selectedPhoto.user.username}`}
         />
-      
-        <div className="photo-details-modal__photographer-details">
-          <img 
-            className="photo-details-modal__photographer-profile" 
-            src={selectedPhoto.user.profile} 
-            alt={`Profile Picture of ${selectedPhoto.user.username}`}
-          />
+        <div className="photo-details-modal__top-bar">
+          <div className="photo-details-modal__photographer-details">
+            <img 
+              className="photo-details-modal__photographer-profile" 
+              src={selectedPhoto.user.profile} 
+              alt={`Profile Picture of ${selectedPhoto.user.username}`}
+            />
 
-          <div className="photo-details-modal__photographer-info">
-            <p> {selectedPhoto.user.name}, @{selectedPhoto.user.username} </p>
-            <div className="photo-details-modal__photographer-location">
-              <p> {selectedPhoto.location.city} , {selectedPhoto.location.country} </p>
+            <div className="photo-details-modal__photographer-info">
+              <p> {selectedPhoto.user.name}, @{selectedPhoto.user.username} </p>
+              <div className="photo-details-modal__photographer-location">
+                <p> {selectedPhoto.location.city} , {selectedPhoto.location.country} </p>
+              </div>
             </div>
           </div>
-        </div>
+      </div>
       
         {/* Display similar photos */}
         <h3>Similar Photos</h3>
-        <PhotoList photos={similarPhotos} toggleModal={toggleModal}/>
+        <PhotoList photos={similarPhotos} toggleModal={toggleModal} likedPhotos={likedPhotos} dispatch={dispatch}/>
       </div>
     </div>
   )
 };
 
 //
-
 export default PhotoDetailsModal;
