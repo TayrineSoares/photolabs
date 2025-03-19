@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList';
 import PhotoFavButton from '../components/PhotoFavButton';
+
 
 
 const PhotoDetailsModal = (props) => {
@@ -9,16 +11,33 @@ const PhotoDetailsModal = (props) => {
 
   if (!selectedPhoto) return null; // Avoid rendering if no photo is selected
 
+  // Handler to close modal when clicking outside
+  const handleOutsideClick = (event) => {
+    const modalContent = document.querySelector('.photo-details-modal');
+    
+    // If the click was outside the modal content, close the modal
+    if (event.target && !modalContent.contains(event.target)) {
+      toggleModal(); // Close modal
+    }
+  };
+
+  // Add event listener to detect outside clicks when the modal is rendered
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    // Cleanup the event listener when component is unmounted
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
   
 
   // converts similarPhotos object into an array
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
 
   return (
-    
-    <div className="photo-details-modal">
-      
-      
+    <div className="photo-details-modal"  >
+
       <button className="photo-details-modal__close-button" onClick={toggleModal}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
@@ -53,8 +72,8 @@ const PhotoDetailsModal = (props) => {
         <PhotoList photos={similarPhotos} toggleModal={toggleModal} likedPhotos={likedPhotos} dispatch={dispatch}/>
       </div>
     </div>
+
   )
 };
 
-//
 export default PhotoDetailsModal;
