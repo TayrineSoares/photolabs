@@ -2,9 +2,8 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  // data come as a prop from the parent PhotoList
+
   const { photo, likedPhotos, dispatch, toggleModal } = props;
-  //console.log("PHOTO LIST ITEM", photo);
 
   return (
     <div>
@@ -15,11 +14,12 @@ const PhotoListItem = (props) => {
         dispatch={dispatch}
         />
 
+        {/* When image is clicked the toggleModal is trigered*/}
         <img 
           className='photo-list__image' 
           src={photo.urls.regular}
           alt={`Photo ${photo.id} by ${photo.user.username}`}
-          onClick={() => toggleModal(photo)} // calls the toggleModal that comes from App 
+          onClick={() => toggleModal(photo)} 
         />
 
         <div className="photo-list__user-details">
@@ -32,17 +32,14 @@ const PhotoListItem = (props) => {
         
           <div className="photo-list__user-info">
             <p> {photo.user.name}, @{photo.user.username}  </p>
-            <p></p>
             <div className="photo-list__user-location">
               <p> {photo.location.city} , {photo.location.country} </p>
             </div>
-            
           </div>
         </div>
       </div>
     </div>
   )
-
 };
 
 export default PhotoListItem;

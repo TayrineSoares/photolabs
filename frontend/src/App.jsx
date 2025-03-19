@@ -15,11 +15,10 @@ const App = () => {
     setSelectedTopic
   } = useApplicationData();
 
-  // --------------------------------------------------------------------
   
   return (
     <div className="App">
-      {/*send photos and topics mock data as a prop to the childs */ }
+      {/*send photos and topics data as a prop to the childs */ }
       {/*send likedPhotos and dispatch all the way down to PhotoFavButton */ }
       {/*send toggleModal all the way down to PhotoListItem */ }
       
@@ -29,7 +28,6 @@ const App = () => {
         likedPhotos={state.likedPhotos}
         dispatch={favouritePhotos} 
         toggleModal={toggleModal}
-        selectedTopic={state.selectedTopic}
         setSelectedTopic={setSelectedTopic}
       /> 
 

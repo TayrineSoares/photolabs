@@ -1,22 +1,18 @@
 import '../styles/PhotoFavButton.scss';
-
-// import FavIcon from './FavIcon';
 import FavIcon from './FavIcon';
 
 const PhotoFavButton = (props) => {
 
   const { photoId, likedPhotos = [], dispatch } = props;
-
   const isFavourite = likedPhotos.includes(photoId);
 
   const handleFavouriteClick = () => {
-    dispatch(photoId); // Toggle photo in global state
+    dispatch(photoId);
   }
   
   return (
     <div className="photo-list__fav-icon" onClick={handleFavouriteClick}> 
 
-      {/* Pass the selected (isFavourite) state to FavIcon component as prop */}
       <FavIcon selected={isFavourite} />
 
     </div>

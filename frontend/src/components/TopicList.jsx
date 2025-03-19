@@ -1,7 +1,6 @@
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
-// Receive topics data from the parent TopNavigationBar
 const TopicList = (props) => {
   const { topics, setSelectedTopic } = props; 
   return (
@@ -13,7 +12,6 @@ const TopicList = (props) => {
           <TopicListItem key={item.id} title={item.title} id={item.id} setSelectedTopic={setSelectedTopic}  />
         )
       })}
-    
     </div>
   );
 };

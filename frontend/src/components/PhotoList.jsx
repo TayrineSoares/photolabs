@@ -1,7 +1,6 @@
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-// Receive photos as a prop from the parent HomeRoute
 const PhotoList = (props) => {
   const {photos, likedPhotos, dispatch, toggleModal} = props;
   

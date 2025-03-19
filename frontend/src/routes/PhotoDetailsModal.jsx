@@ -31,7 +31,6 @@ const PhotoDetailsModal = (props) => {
     };
   }, []);
   
-
   // converts similarPhotos object into an array
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
 

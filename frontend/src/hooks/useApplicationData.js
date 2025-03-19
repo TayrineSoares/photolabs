@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from "react"
 
-// reducer function 
+// REDUCER FUNTION
 const reducer = (state, action) => {
 
   if (action.type === "FAV_PHOTO_ADDED") {
@@ -64,7 +64,8 @@ const reducer = (state, action) => {
   }
 }
 
-// Setting Initial State
+
+// SETTING INITIAL STATE
 const initialState = {
   photoData: [],
   topicData: [],
@@ -74,7 +75,7 @@ const initialState = {
   selectedTopic: null
 }
 
-// Custom hook
+// CUSTOM HOOK
 const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState); 
@@ -83,26 +84,21 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch('http://localhost:8001/api/photos')
 
-      .then(res => res.json() ) // Parse the JSON response
+      .then(res => res.json() )
       
-      // dispatch the photos data as a payload for your reducer.
+      // dispatch the photos data as a payload for reducer
       .then(data => dispatch( {type: "SET_PHOTO_DATA", payload: data}))
-
-      .catch(error => {
-        console.error("Error Fetching photos data", error)
-      })
-        
+      .catch(error => console.error("Error Fetching photos data", error))      
   },[])
 
   //useEffect to fetch ALL topics
   useEffect(() => {
     fetch('http://localhost:8001/api/topics')
 
-    .then (res => res.json()) // Parse the JSON response
+    .then (res => res.json())
 
-    // dispatch the photos data as a payload for your reducer.
+    // dispatch the photos data as a payload for reducer
     .then (data => dispatch( {type: "SET_TOPIC_DATA", payload: data}))
-
     .catch(error => console.log("Error Fetching topics data", error))
 
   }, [])
@@ -111,18 +107,16 @@ const useApplicationData = () => {
    useEffect(() => {
     if (state.selectedTopic) {
       fetch(`http://localhost:8001/api/topics/${state.selectedTopic}/photos`)
+
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch topic photos');
         }
-        return res.json(); // Parse the JSON response
+        return res.json();
       })
-      .then(data => {
-        dispatch( {type: "SET_TOPIC_PHOTOS", payload: data }); // Dispatch the topic-based photos
-      })
-      .catch(error => {
-        console.log("Erro Fetching photos for topic", error);
-      })
+      // Dispatch the topic-based photos
+      .then(data => dispatch( {type: "SET_TOPIC_PHOTOS", payload: data })) 
+      .catch(error => console.log("Erro Fetching photos for topic", error))
     }
   }, [state.selectedTopic]) // Runs when selectedTopic changes
 
@@ -144,12 +138,12 @@ const useApplicationData = () => {
     dispatch( {type: "SET_APP_DATA", payload: {likedPhotos: data.likedPhotos} } )
   }; 
 
-  // Action to set selected topic (new function)
+  // Action to set selected topic
   const setSelectedTopic = (topicId) => {
     dispatch({ type: "SET_SELECTED_TOPIC", payload: topicId });
   };
 
-  // Our useApplicationData Hook will return an object
+  // Returns an object
   return {
     state, 
     toggleModal, 
