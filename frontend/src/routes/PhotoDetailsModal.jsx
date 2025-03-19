@@ -54,4 +54,6 @@ const PhotoDetailsModal = (props) => {
   )
 };
 
+//
+
 export default PhotoDetailsModal;
